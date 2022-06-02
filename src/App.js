@@ -1,5 +1,6 @@
 import logo from './img/AlphaTeamDev-sm.png';
 import './App.css';
+import Task from './components/task/task';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       </div>
       <div className="todolist-container">
         <h1> Mis Tareas </h1>
+        <Task text="Aprender React"/>
       </div>
     </div>
   );
