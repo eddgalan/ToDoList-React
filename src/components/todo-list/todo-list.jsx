@@ -14,13 +14,18 @@ function ToDoList() {
     }
   }
 
+  const deleteTask = (id) => {
+    const tasks_ = tasks.filter(task => task.id !== id);
+    setTask(tasks_);
+  }
+
   return (
     <>
       <TaskForm onSubmit={ addTask } />
       <div className="todo-list-container">
         {
           tasks.map((task) =>
-            <Task key={ task.id } id={ task.id } text={ task.text } completed={ task.completed } />
+            <Task key={ task.id } id={ task.id } text={ task.text } completed={ task.completed } deleteTask={deleteTask}/>
           )
         }
       </div>
