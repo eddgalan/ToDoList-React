@@ -4,20 +4,30 @@ import Task from '../task/task';
 import './todo-list.css';
 
 function ToDoList() {
-  const [tasks, setTask] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   const addTask = (task) => {
     if( task.text.trim() ) {
       task.text = task.text.trim();
       const tasksUpdated = [task, ...tasks];
-      setTask(tasksUpdated);
+      setTasks(tasksUpdated);
     }
-  }
+  };
 
   const deleteTask = (id) => {
     const tasks_ = tasks.filter(task => task.id !== id);
-    setTask(tasks_);
-  }
+    setTasks(tasks_);
+  };
+
+  const completeTask = (id) => {
+    const tasks_ = tasks.map(task => {
+      if( task.id === id ) {
+        task.completed = !task.completed;
+      }
+      return task;
+    });
+    setTasks(tasks_);
+  };
 
   return (
     <>
@@ -25,7 +35,8 @@ function ToDoList() {
       <div className="todo-list-container">
         {
           tasks.map((task) =>
-            <Task key={ task.id } id={ task.id } text={ task.text } completed={ task.completed } deleteTask={deleteTask}/>
+            <Task key={ task.id } id={ task.id } text={ task.text } completed={ task.completed }
+              deleteTask={deleteTask} completeTask={completeTask} />
           )
         }
       </div>
