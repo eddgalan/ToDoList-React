@@ -7,7 +7,7 @@ function TaskForm(props) {
 
   const typeTask = (event) => {
     setInput(event.target.value);
-  }
+  };
 
   const send = (event) => {
     event.preventDefault(); // Evita la carga de la página cuando se envía en form
@@ -17,7 +17,7 @@ function TaskForm(props) {
       completed: false,
     }
     props.onSubmit(newTask);
-  }
+  };
 
   return (
     <form className="task-form" onSubmit={ send }>
